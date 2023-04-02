@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basic Practise</title>
+    <style>
+      .box {
+        background-color: purple;
+        width: 100px;
+        height: 100px;
+      }
+      .box-two {
+        background-color: blueviolet;
+        width: 100px;
+        height: 100px;
+      }
+      .box-three {
+        background-color: indianred;
+        width: 100px;
+        height: 100px;
+      }
+
+      [v-cloak] {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- v-cloak hides everything until the app is ready -->
+    <div id="app" v-cloak>
+      {{message}}
+      <input v-model="message" />
+      <hr />
+      <div class="box" v-if="isVisible"></div>
+      <div class="box-two" v-else-if="isVisible2"></div>
+      <div class="box-three" v-else></div>
+
+      <!-- <div class="box" v-show="isVisible"></div>
+      Note that with v-show, if the value is false the 
+      dom will still render a div. However for v-if the 
+      dom won't render the element at all if false -->
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      let app = Vue.createApp({
+        data: () => {
+          return {
+            message: "dshiuw",
+            isVisible: false,
+            isVisible2: false,
+          };
+        },
+      });
+      app.mount("#app");
+    </script>
+  </body>
+</html>
